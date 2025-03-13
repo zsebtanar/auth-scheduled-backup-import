@@ -55,6 +55,8 @@ const importUsersFromFile = async (filePath: string) => {
       }
       if (user.passwordSalt) {
         userData.passwordSalt = Buffer.from(user.passwordSalt, "base64");
+      } else if (user.passwordSalt === '') {
+        userData.passwordSalt = Buffer.alloc(0);
       }
       return userData;
     }
